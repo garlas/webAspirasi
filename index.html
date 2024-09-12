@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MPK Astronot</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #323438;
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      /* Navbar */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        background: rgba(82, 77, 77, 0.5);
+        z-index: 1000;
+        transition: all 0.6s ease-in-out;
+      }
+
+      .navbar img {
+        height: 60px;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .navbar h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      /* Hero Section */
+      .hero {
+        height: calc(100vh - 10px);
+        background: url("img/q.jpeg") no-repeat center center/cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 0 1rem;
+        margin-top: 80px;
+        border-radius: 30px;
+        box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero h2,
+      .hero p {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 10px 20px;
+        border-radius: 10px;
+        transition: all 0.5s ease-in-out;
+      }
+
+      .hero h2 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #c1c0bc;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto;
+        color: #ddd;
+      }
+
+      /* Menu Aspirasi */
+      .aspirasi-menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 2rem 0;
+        padding: 1rem;
+        background-color: #444;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .aspirasi-menu a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 1rem;
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+
+      .aspirasi-menu a:hover {
+        background-color: #ffdd57;
+        color: #000;
+        transform: scale(1.1);
+      }
+
+      /* Section Content */
+      .content {
+        padding: 5rem 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background: #222;
+        color: #fff;
+      }
+
+      .content h3,
+      .content p {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 1s ease-in-out;
+      }
+
+      .content h3 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        color: #ffdd57;
+      }
+
+      .content p {
+        font-size: 1.1rem;
+        max-width: 800px;
+        margin-bottom: 3rem;
+        color: #bbb;
+      }
+
+      /* Gallery */
+      .gallery {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 1s ease-in-out;
+      }
+
+      .gallery img {
+        width: 300px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      .gallery img:hover {
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: #14161f;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        margin-top: 3rem;
+      }
+
+      /* Animasi */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsif */
+      @media (max-width: 768px) {
+        .navbar h3 {
+          font-size: 1.2rem;
+        }
+
+        .hero h2 {
+          font-size: 2.2rem;
+        }
+
+        .hero {
+          border-radius: 20px;
+          height: auto;
+          max-width: 95%;
+        }
+
+        .gallery img {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <div class="navbar" id="navbar">
+        <img src="img/d.png" alt="Astronot Logo" />
+        <h3>MPK SMAGE</h3>
+      </div>
+    </header>
+    <!-- Hero Section -->
+    <div class="hero">
+      <h2>Jelajahi Ruang Aspirasi</h2>
+      <p>
+        Bergabunglah dengan kami untuk mengeksplorasi ide-ide kreatif, inovasi,
+        dan prestasi bersama MPK.
+      </p>
+    </div>
+
+    <!-- Menu Aspirasi -->
+    <div class="aspirasi-menu">
+      <a href="aspirasi.html">Form Aspirasi</a>
+      <a href="#form-aspirasi">Informasi Lebih</a>
+    </div>
+
+    <!-- Section Content -->
+    <section class="content">
+      <h3 id="form-aspirasi">Tentang MPK</h3>
+      <p>
+        MPK adalah organisasi yang berfungsi sebagai wadah bagi siswa untuk
+        menyalurkan aspirasi, kreativitas, dan bakat. Bersama-sama, kami
+        mendorong inovasi untuk membangun masa depan yang lebih baik.
+      </p>
+      <div class="gallery" id="gallery">
+        <h1>MPK SMAN 1 GEDEG</h1>
+        <img src="img/mpk1.jpg" alt="foto 1" />
+        <img src="img/mpk2.jpg" alt="foto 2" />
+        <img src="img/mpk3.jpg" alt="foto 3" />
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>© 2024 MPK - Menjaga Impian Tetap Hidup</p>
+    </div>
+
+    <script>
+      const contentSection = document.querySelector(".content");
+      const gallery = document.getElementById("gallery");
+      const aspirasiMenu = document.querySelector(".aspirasi-menu");
+
+      // Fungsi untuk memeriksa posisi elemen dan menambahkan animasi
+      function handleScroll() {
+        const contentPosition = contentSection.getBoundingClientRect().top;
+        const galleryPosition = gallery.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight;
+
+        if (contentPosition < screenPosition) {
+          contentSection.querySelector("h3").style.opacity = "1";
+          contentSection.querySelector("h3").style.transform = "translateY(0)";
+          contentSection.querySelector("p").style.opacity = "1";
+          contentSection.querySelector("p").style.transform = "translateY(0)";
+        }
+
+        if (galleryPosition < screenPosition) {
+          gallery.style.opacity = "1";
+          gallery.style.transform = "translateY(0)";
+        }
+
+        if (aspirasiMenu.getBoundingClientRect().top < screenPosition) {
+          aspirasiMenu.style.opacity = "1";
+          aspirasiMenu.style.transform = "translateY(0)";
+        }
+      }
+
+      // Tambahkan event listener untuk scroll
+      window.addEventListener("scroll", handleScroll);
+
+      // Navbar selalu muncul
+      window.addEventListener("load", function () {
+        document.getElementById("navbar").classList.add("show");
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
