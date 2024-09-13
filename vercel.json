@@ -4,16 +4,6 @@
       "source": "/index.html",
       "destination": "/",
       "permanent": true
-    },
-    {
-      "source": "/aspirasi.html",
-      "destination": "/aspirasi",
-      "permanent": true
-    },
-    {
-      "source": "/dokumen.html",
-      "destination": "/dokumen",
-      "permanent": true
     }
   ]
 }
