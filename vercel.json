@@ -2,19 +2,19 @@
   "redirects": [
     {
       "source": "/index.html",
-      "destination": "/HOME",
+      "destination": "/",
       "permanent": true
     },
 
     {
       "source": "/dokumen.html",
-      "destination": "/PROKER MPK",
+      "destination": "/K",
       "permanent": true
     },
 
     {
       "source": "/aspirasi.html",
-      "destination": "/ASPIRASI SMAN 1 GEDEG",
+      "destination": "/",
       "permanent": true
     }
   ]
