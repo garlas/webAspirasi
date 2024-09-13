@@ -5,16 +5,14 @@
       "destination": "/",
       "permanent": true
     },
-
-    {
-      "source": "/dokumen.html",
-      "destination": "/K",
-      "permanent": true
-    },
-
     {
       "source": "/aspirasi.html",
-      "destination": "/",
+      "destination": "/aspirasi",
+      "permanent": true
+    },
+    {
+      "source": "/dokumen.html",
+      "destination": "/dokumen",
       "permanent": true
     }
   ]
