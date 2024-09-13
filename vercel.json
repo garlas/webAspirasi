@@ -1,7 +1,19 @@
 {
-  "rewrites": [
-    { "source": "/index.html", "destination": "/" },
-    { "source": "/aspirasi.html", "destination": "/aspirasi" },
-    { "source": "/dokumen.html", "destination": "/dokumen" }
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/aspirasi.html",
+      "destination": "/aspirasi",
+      "permanent": true
+    },
+    {
+      "source": "/dokumen.html",
+      "destination": "/dokumen",
+      "permanent": true
+    }
   ]
 }
