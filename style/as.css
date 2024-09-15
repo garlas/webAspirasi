@@ -1,3 +1,4 @@
+/* Reset default styling */
 * {
   margin: 0;
   padding: 0;
@@ -57,6 +58,8 @@ body {
   border-radius: 13px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   max-width: 400px; /* Mengatur lebar maksimum agar tidak terlalu lebar */
+  width: 100%; /* Memastikan elemen mengambil lebar penuh kontainer */
+  box-sizing: border-box; /* Memastikan padding dan border tidak mempengaruhi lebar elemen */
 }
 
 .report-form h2 {
@@ -64,16 +67,14 @@ body {
   margin-bottom: 1rem;
   color: #ffdd57;
   text-align: center;
-}
-
-.report-form form {
-  display: flex;
-  flex-direction: column;
+  animation: fadeInUp 1s ease-out;
 }
 
 .report-form label {
   margin-bottom: 0.5rem;
   color: #fff;
+  animation: fadeInUp 1s ease-out;
+  animation-delay: 0.5s; /* Delay sedikit setelah heading */
 }
 
 .report-form input,
@@ -84,6 +85,10 @@ body {
   border-radius: 4px;
   background-color: #222;
   color: #fff;
+  animation: fadeInUp 1s ease-out;
+  animation-delay: 1s; /* Delay sedikit setelah label */
+  width: 100%; /* Memastikan input dan textarea mengisi lebar kontainer */
+  box-sizing: border-box; /* Memastikan padding tidak menambah lebar elemen */
 }
 
 .report-form button {
@@ -94,10 +99,32 @@ body {
   color: #000;
   font-size: 1rem;
   cursor: pointer;
+  animation: fadeInUp 1s ease-out;
+  animation-delay: 1.5s; /* Delay sedikit setelah input */
+  width: 100%; /* Memastikan tombol mengisi lebar kontainer */
+  box-sizing: border-box; /* Memastikan padding tidak menambah lebar elemen */
 }
 
+/* Hover effect untuk button */
 .report-form button:hover {
   background-color: #ffd700;
+  animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
 }
 
 /* Tambahan untuk tombol Back Home */
@@ -107,35 +134,53 @@ body {
   padding: 8px 16px;
   font-size: 0.9rem;
   color: #fff;
-  background-color: #ff5722; /* Ganti dengan warna yang sesuai */
+  background-color: #ff5722;
   text-decoration: none;
   border-radius: 5px;
   text-align: center;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .back-home:hover {
-  background-color: #e64a19; /* Ganti dengan warna hover yang sesuai */
+  background-color: #e64a19;
+  transform: scale(1.1); /* Memperbesar tombol saat hover */
 }
 
+/* Animasi untuk report info */
 .report-info {
   margin-top: 30px;
   padding: 20px;
   background-color: #1e1e1e;
   border-radius: 10px;
   margin: 100px auto 30px;
+  animation: fadeInUp 1s ease-out;
 }
 
 .report-info h3 {
   margin-bottom: 14px;
   color: #ffdd57;
   padding: 5px;
+  animation: fadeInUp 1s ease-out;
 }
 
 .report-info p {
   font-size: 1rem;
   color: #bbb;
   padding: 2px;
+  animation: fadeInUp 1s ease-out;
+  animation-delay: 0.5s; /* Delay untuk efek teks */
+}
+
+/* Keyframes untuk fadeInUp */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Footer */

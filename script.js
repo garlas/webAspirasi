@@ -1,17 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const form = document.querySelector("#report form"); // Pastikan memilih form di dalam elemen #report
+  const form = document.querySelector("#report form");
   const submitButton = form.querySelector('button[type="submit"]');
 
   form.addEventListener("submit", function (event) {
     event.preventDefault(); // Mencegah pengiriman form secara default
 
+    // Memperbaiki selector untuk input dan textarea
     const nama = document.querySelector('input[name="name"]').value.trim();
-    const kontak = document.querySelector('input[name="email"]').value.trim();
+    const kelas = document.querySelector('input[name="kelas"]').value.trim();
+    const kontak = document.querySelector('input[name="email"]').value.trim(); // Sesuaikan dengan name yang benar
     const teksAspirasi = document
       .querySelector('textarea[name="issue"]')
       .value.trim();
 
-    if (teksAspirasi === "" || nama === "" || kontak === "") {
+    // Validasi form
+    if (nama === "" || kelas === "" || kontak === "" || teksAspirasi === "") {
       alert("Semua kolom harus diisi!");
       return;
     }
@@ -21,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const waktuKirim = new Date().toLocaleString(); // Mengambil waktu lokal
 
     const webhookUrl =
-      "https://discord.com/api/webhooks/1274643187742281788/949FutOCV7wUpFr5642KasuS6B1D1W2dyKTUWqOzLhF0dYASVQXNK8fqtmVlGorfXeqj"; // URL webhook Anda
+      "https://discord.com/api/webhooks/1274643187742281788/949FutOCV7wUpFr5642KasuS6B1D1W2dyKTUWqOzLhF0dYASVQXNK8fqtmVlGorfXeqj"; // Ganti dengan URL webhook Discord kamu
 
     const requestData = {
       embeds: [
@@ -33,6 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
             {
               name: "Pengirim",
               value: `Nama: ${nama}`,
+              inline: false,
+            },
+            {
+              name: "Kelas",
+              value: `Kelas: ${kelas}`,
               inline: false,
             },
             {
