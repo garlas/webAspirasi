@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 
-  // Fungsi untuk memeriksa apakah teks adalah asal ketik
+  // Fungsi untuk memeriksa teks asal ketik
   function isGibberish(text) {
     const minWordLength = 3;
     const words = text.split(/\s+/);
@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (/([a-zA-Z])\1{5,}/.test(word)) return true; // Pengulangan karakter lebih dari 5 kali
     }
 
-    // Cek apakah ada terlalu banyak huruf acak tanpa kata bermakna
+    //cek banyak huruf acak tanpa kata bermakna
     const gibberishRegex = /^[a-z]{20,}$/i; // Kata yang lebih dari 15 huruf tanpa spasi
     return gibberishRegex.test(text);
   }
