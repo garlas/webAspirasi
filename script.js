@@ -19,6 +19,14 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    // Validasi teks asal ketik
+    if (isGibberish(teksAspirasi)) {
+      alert(
+        "Aspirasi yang Anda kirim terlihat tidak valid. Silakan kirim aspirasi yang lebih jelas."
+      );
+      return;
+    }
+
     submitButton.disabled = true; // Menonaktifkan tombol untuk mencegah pengiriman ganda
 
     const waktuKirim = new Date().toLocaleString(); // Mengambil waktu lokal
@@ -45,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             {
               name: "Kontak",
-              value: kontak ? `Kontak: ${kontak}` : "Kontak kosong", // Menampilkan "Tidak ada kontak" jika kontak kosong
+              value: kontak ? `Kontak: ${kontak}` : "Tidak ada kontak",
               inline: false,
             },
             {
@@ -89,4 +97,20 @@ document.addEventListener("DOMContentLoaded", function () {
         submitButton.disabled = false; // Mengaktifkan tombol kembali
       });
   });
+
+  // Fungsi untuk memeriksa apakah teks adalah asal ketik
+  function isGibberish(text) {
+    const minWordLength = 3;
+    const words = text.split(/\s+/);
+
+    // Cek apakah kata terlalu pendek atau hanya pengulangan karakter
+    for (let word of words) {
+      if (word.length < minWordLength) return true; // Kata terlalu pendek
+      if (/([a-zA-Z])\1{5,}/.test(word)) return true; // Pengulangan karakter lebih dari 10 kali
+    }
+
+    // Cek apakah ada terlalu banyak huruf acak tanpa kata bermakna
+    const gibberishRegex = /^[a-z]{20,}$/i; // Kata yang lebih dari 20 huruf tanpa spasi
+    return gibberishRegex.test(text);
+  }
 });
