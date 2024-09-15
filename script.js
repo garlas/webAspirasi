@@ -102,15 +102,34 @@ document.addEventListener("DOMContentLoaded", function () {
   function isGibberish(text) {
     const minWordLength = 3;
     const words = text.split(/\s+/);
+    const minTotalLength = 10; // Minimal panjang total teks
+    const maxTotalLength = 100000; // Maksimal panjang total teks
 
-    // Cek apakah kata terlalu pendek atau hanya pengulangan karakter
+    // Cek panjang total teks
+    if (text.length < minTotalLength || text.length > maxTotalLength)
+      return true;
+
+    // Cek apakah ada huruf vokal dan konsonan yang seimbang
+    const vowelCount = (text.match(/[aeiou]/gi) || []).length;
+    const consonantCount = (text.match(/[bcdfghjklmnpqrstvwxyz]/gi) || [])
+      .length;
+
+    if (vowelCount === 0 || consonantCount === 0) {
+      return true; // Teks hanya vokal atau hanya konsonan
+    }
+
+    if (consonantCount / vowelCount > 5) {
+      return true; // Terlalu banyak konsonan dibanding vokal
+    }
+
+    // Cek setiap kata
     for (let word of words) {
       if (word.length < minWordLength) return true; // Kata terlalu pendek
-      if (/([a-zA-Z])\1{5,}/.test(word)) return true; // Pengulangan karakter lebih dari 10 kali
+      if (/([a-zA-Z])\1{5,}/.test(word)) return true; // Pengulangan karakter lebih dari 5 kali
     }
 
     // Cek apakah ada terlalu banyak huruf acak tanpa kata bermakna
-    const gibberishRegex = /^[a-z]{20,}$/i; // Kata yang lebih dari 20 huruf tanpa spasi
+    const gibberishRegex = /^[a-z]{20,}$/i; // Kata yang lebih dari 15 huruf tanpa spasi
     return gibberishRegex.test(text);
   }
 });
