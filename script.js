@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", function () {
       .querySelector('textarea[name="issue"]')
       .value.trim();
 
-    // Validasi form
-    if (nama === "" || kelas === "" || kontak === "" || teksAspirasi === "") {
-      alert("Semua kolom harus diisi!");
+    // Validasi form, hanya memeriksa nama, kelas, dan aspirasi
+    if (nama === "" || kelas === "" || teksAspirasi === "") {
+      alert("Nama, Kelas, dan Aspirasi harus diisi!");
       return;
     }
 
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             {
               name: "Kontak",
-              value: `Kontak: ${kontak}`,
+              value: kontak ? `Kontak: ${kontak}` : "Kontak kosong", // Menampilkan "Tidak ada kontak" jika kontak kosong
               inline: false,
             },
             {
