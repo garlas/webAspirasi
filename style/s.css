@@ -106,7 +106,12 @@ body {
 .hero h2 span:nth-child(15) {
   animation-delay: 1.5s;
 }
-
+.hero h2 span:nth-child(16) {
+  animation-delay: 1.6s;
+}
+.hero h2 span:nth-child(17) {
+  animation-delay: 1.7s;
+}
 /* Responsiveness for smaller screens */
 @media (max-width: 768px) {
   .hero h2 {

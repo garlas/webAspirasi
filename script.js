@@ -133,3 +133,20 @@ document.addEventListener("DOMContentLoaded", function () {
     return gibberishRegex.test(text);
   }
 });
+
+// untuk halaman komisi
+const toggleButtons = document.querySelectorAll(".toggle");
+const komisiBodies = document.querySelectorAll(".komisi-body");
+
+toggleButtons.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    const komisiBody = komisiBodies[index];
+    if (komisiBody.style.display === "block") {
+      komisiBody.style.display = "none";
+      button.textContent = "+";
+    } else {
+      komisiBody.style.display = "block";
+      button.textContent = "-";
+    }
+  });
+});
