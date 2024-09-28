@@ -3,23 +3,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const submitButton = form.querySelector('button[type="submit"]');
 
   form.addEventListener("submit", function (event) {
-    event.preventDefault(); // Mencegah pengiriman form secara default
+    event.preventDefault();
 
-    // Memperbaiki selector untuk input dan textarea
     const nama = document.querySelector('input[name="name"]').value.trim();
     const kelas = document.querySelector('input[name="kelas"]').value.trim();
-    const kontak = document.querySelector('input[name="email"]').value.trim(); // Sesuaikan dengan name yang benar
+    const kontak = document.querySelector('input[name="email"]').value.trim();
     const teksAspirasi = document
       .querySelector('textarea[name="issue"]')
       .value.trim();
 
-    // Validasi form, hanya memeriksa nama, kelas, dan aspirasi
     if (nama === "" || kelas === "" || teksAspirasi === "") {
       alert("Nama, Kelas, dan Aspirasi harus diisi!");
       return;
     }
 
-    // Validasi teks asal ketik
     if (isGibberish(teksAspirasi)) {
       alert(
         "Aspirasi yang Anda kirim terlihat tidak valid. Silakan kirim aspirasi yang lebih jelas."
@@ -27,12 +24,12 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    submitButton.disabled = true; // Menonaktifkan tombol untuk mencegah pengiriman ganda
+    submitButton.disabled = true;
 
-    const waktuKirim = new Date().toLocaleString(); // Mengambil waktu lokal
+    const waktuKirim = new Date().toLocaleString();
 
     const webhookUrl =
-      "https://discord.com/api/webhooks/1274643187742281788/949FutOCV7wUpFr5642KasuS6B1D1W2dyKTUWqOzLhF0dYASVQXNK8fqtmVlGorfXeqj"; // Ganti dengan URL webhook Discord kamu
+      "https://discord.com/api/webhooks/1274643187742281788/949FutOCV7wUpFr5642KasuS6B1D1W2dyKTUWqOzLhF0dYASVQXNK8fqtmVlGorfXeqj"; // webhook
 
     const requestData = {
       embeds: [
@@ -84,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => {
         if (response.ok) {
           alert("Terima Kasih Telah Berbagi Aspirasi :)");
-          form.reset(); // Mengosongkan form setelah pengiriman
+          form.reset();
         } else {
           alert("Gagal mengirim aspirasi.");
         }
@@ -94,59 +91,73 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Terjadi kesalahan saat mengirim aspirasi.");
       })
       .finally(() => {
-        submitButton.disabled = false; // Mengaktifkan tombol kembali
+        submitButton.disabled = false;
       });
   });
 
-  // Fungsi untuk memeriksa teks asal ketik
   function isGibberish(text) {
     const minWordLength = 3;
     const words = text.split(/\s+/);
-    const minTotalLength = 10; // Minimal panjang total teks
-    const maxTotalLength = 100000; // Maksimal panjang total teks
+    const minTotalLength = 10;
+    const maxTotalLength = 100000;
 
-    // Cek panjang total teks
+    // Cek panjang teks minimal dan maksimal
     if (text.length < minTotalLength || text.length > maxTotalLength)
       return true;
 
-    // Cek apakah ada huruf vokal dan konsonan yang seimbang
     const vowelCount = (text.match(/[aeiou]/gi) || []).length;
     const consonantCount = (text.match(/[bcdfghjklmnpqrstvwxyz]/gi) || [])
       .length;
 
-    if (vowelCount === 0 || consonantCount === 0) {
-      return true; // Teks hanya vokal atau hanya konsonan
-    }
+    // Harus ada vokal dan konsonan
+    if (vowelCount === 0 || consonantCount === 0) return true;
 
-    if (consonantCount / vowelCount > 5) {
-      return true; // Terlalu banyak konsonan dibanding vokal
-    }
+    // Rasio konsonan dengan vokal tidak boleh terlalu tinggi (contoh: "ssssss" atau "rrrrr")
+    if (consonantCount / vowelCount > 5 || vowelCount / consonantCount > 5)
+      return true;
 
-    // Cek setiap kata
     for (let word of words) {
-      if (word.length < minWordLength) return true; // Kata terlalu pendek
-      if (/([a-zA-Z])\1{5,}/.test(word)) return true; // Pengulangan karakter lebih dari 5 kali
+      // Kata harus lebih panjang dari batas minimum
+      if (word.length < minWordLength) return true;
+
+      // Deteksi pengulangan karakter berlebihan (contoh: "aaaaa" atau "bbbbb")
+      if (/([a-zA-Z])\1{3,}/.test(word)) return true; // Lebih ketat, hanya izinkan hingga 3 huruf sama berulang
+
+      // Deteksi kata yang hanya terdiri dari huruf acak dengan pola vokal/konsonan tidak beraturan
+      const vowelsInWord = (word.match(/[aeiou]/gi) || []).length;
+      const consonantsInWord = (word.match(/[bcdfghjklmnpqrstvwxyz]/gi) || [])
+        .length;
+
+      // Jika kata mengandung perbandingan yang sangat mirip antara konsonan dan vokal
+      if (Math.abs(vowelsInWord - consonantsInWord) <= 1) return true;
+
+      // Deteksi kata yang tidak masuk akal atau terlalu panjang tanpa variasi vokal/konsonan
+      if (/^[a-zA-Z]{20,}$/.test(word)) return true;
     }
 
-    //cek banyak huruf acak tanpa kata bermakna
-    const gibberishRegex = /^[a-z]{20,}$/i; // Kata yang lebih dari 15 huruf tanpa spasi
-    return gibberishRegex.test(text);
+    // Regex untuk mendeteksi teks yang mungkin acak
+    const gibberishRegex = /^[a-z]{20,}$/i;
+    if (gibberishRegex.test(text)) return true;
+
+    // Tambahkan lebih banyak logika validasi jika diperlukan
+
+    return false;
   }
-});
 
-// untuk halaman komisi
-const toggleButtons = document.querySelectorAll(".toggle");
-const komisiBodies = document.querySelectorAll(".komisi-body");
+  // halaman komisi
+  const toggleButtons = document.querySelectorAll(".toggle");
+  const komisiBodies = document.querySelectorAll(".komisi-body");
 
-toggleButtons.forEach((button, index) => {
-  button.addEventListener("click", () => {
-    const komisiBody = komisiBodies[index];
-    if (komisiBody.style.display === "block") {
-      komisiBody.style.display = "none";
-      button.textContent = "+";
-    } else {
-      komisiBody.style.display = "block";
-      button.textContent = "-";
-    }
+  toggleButtons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      const komisiBody = komisiBodies[index];
+      if (komisiBody.style.display === "block") {
+        komisiBody.style.display = "none";
+        button.textContent = "+";
+      } else {
+        komisiBody.style.display = "block";
+        button.textContent = "-";
+      }
+    });
   });
 });
