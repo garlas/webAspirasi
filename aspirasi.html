@@ -25,9 +25,6 @@
         top: 0;
         background: rgba(141, 119, 119, 0.8);
         z-index: 1000;
-        transition: all 0.6s ease-in-out;
-        white-space: nowrap; /* Mencegah pemotongan teks */
-        overflow: hidden; /* Menyembunyikan overflow */
       }
 
       .navbar img {
@@ -36,12 +33,11 @@
       }
 
       .navbar h3 {
-        font-size: 1.8rem;
+        font-size: 2rem; /* Sesuaikan ukuran font */
         font-weight: 600;
-        letter-spacing: 2px;
         color: #000;
-        margin: 0; /* Menghilangkan margin untuk menghindari pemotongan */
-        padding: 0 1rem; /* Menambahkan padding di samping */
+        margin: 0;
+        padding-right: 55px;
       }
 
       @keyframes float {
@@ -165,6 +161,9 @@
         .report-form h2 {
           font-size: 1.5rem;
         }
+        .navbar h3 {
+          font-size: 1.5rem; /* Sesuaikan ukuran font di navbar */
+        }
       }
 
       @media (max-width: 480px) {
@@ -174,7 +173,7 @@
         }
 
         .navbar h3 {
-          font-size: 1.5rem;
+          font-size: 1.3rem; /* Sesuaikan ukuran font di navbar */
         }
       }
     </style>
@@ -253,52 +252,6 @@
       <p>© 2024 MPK - Created By Komisi D</p>
     </div>
 
-    <script>
-      document.getElementById("anonim").addEventListener("change", function () {
-        const namaInput = document.getElementById("name");
-        if (this.checked) {
-          namaInput.disabled = true; // Nonaktifkan input nama
-          namaInput.value = ""; // Kosongkan nama jika anonim
-        } else {
-          namaInput.disabled = false; // Aktifkan input nama
-        }
-      });
-
-      document
-        .getElementById("aspirasi-form")
-        .addEventListener("submit", function (event) {
-          event.preventDefault();
-
-          const anonimChecked = document.getElementById("anonim").checked;
-          const nama = document.getElementById("name").value;
-          const kelas = document.getElementById("kelas").value;
-          const contact = document.getElementById("contact").value;
-          const aspirasi = document.getElementById("issue").value;
-
-          // Validasi nama jika anonim tidak dicentang
-          if (!anonimChecked && !nama) {
-            alert("Silakan lengkapi nama Anda.");
-            return;
-          }
-
-          // Validasi kelas dan aspirasi
-          if (!kelas || !aspirasi) {
-            alert("Silakan lengkapi semua field yang diperlukan.");
-            return;
-          }
-
-          // Tampilkan informasi yang dikirim ke server (demo)
-          console.log({
-            anonim: anonimChecked,
-            nama: anonimChecked ? "Anonim" : nama,
-            kelas,
-            contact,
-            aspirasi,
-          });
-
-          alert("Aspirasi berhasil dikirim!");
-          this.reset(); // Reset form setelah submit
-        });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
