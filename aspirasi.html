@@ -1,10 +1,183 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style/as.css" />
     <title>ASPIRASI SMAN 1 GEDEG</title>
+    <style>
+      /* Gaya Umum */
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #141415;
+        color: #fff;
+        overflow-x: hidden;
+        margin: 0;
+      }
+
+      /* Navbar */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        background: rgba(141, 119, 119, 0.8);
+        z-index: 1000;
+        transition: all 0.6s ease-in-out;
+        white-space: nowrap; /* Mencegah pemotongan teks */
+        overflow: hidden; /* Menyembunyikan overflow */
+      }
+
+      .navbar img {
+        height: 60px;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .navbar h3 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        color: #000;
+        margin: 0; /* Menghilangkan margin untuk menghindari pemotongan */
+        padding: 0 1rem; /* Menambahkan padding di samping */
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      /* Container Form Aspirasi */
+      .report-form {
+        max-width: 600px;
+        margin: 6rem auto 2rem;
+        padding: 2rem;
+        background-color: #1e1e1e;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        position: relative;
+      }
+
+      .report-form h2 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: #ffffff;
+      }
+
+      /* Input Group Styling */
+      label {
+        font-size: 1rem;
+        color: #cccccc;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      input[type="text"],
+      textarea,
+      select {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #333;
+        border-radius: 8px;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        background-color: #2a2a2a;
+        color: #ffffff;
+        transition: border-color 0.3s ease;
+      }
+
+      input[type="text"]:focus,
+      textarea:focus,
+      select:focus {
+        border-color: #3a9bff;
+        outline: none;
+      }
+
+      /* Checkbox Toggle */
+      .anonim-toggle {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .anonim-toggle label {
+        margin-left: 0.5rem;
+        font-size: 1rem;
+        color: #ffffff;
+      }
+
+      /* Tombol Submit */
+      button {
+        background: linear-gradient(45deg, #ffdd57, #ff7a57);
+        border: none;
+        padding: 0.75rem 2rem;
+        font-size: 1.2rem;
+        color: white;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: background 0.3s ease, box-shadow 0.3s ease;
+        font-weight: bold;
+        display: block;
+        margin: 0 auto;
+      }
+
+      button:hover {
+        background: linear-gradient(45deg, #ff7a57, #ffdd57);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Back Home Link */
+      .back-home {
+        display: block;
+        text-align: center;
+        margin-top: 1rem;
+        color: #3a9bff;
+        text-decoration: none;
+      }
+
+      .back-home:hover {
+        text-decoration: underline;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: #14161f;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        margin-top: 3rem;
+      }
+
+      /* Responsiveness */
+      @media (max-width: 768px) {
+        .report-form {
+          padding: 1.5rem;
+        }
+        .report-form h2 {
+          font-size: 1.5rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        button {
+          width: 100%;
+          padding: 0.75rem;
+        }
+
+        .navbar h3 {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- Navbar -->
@@ -15,52 +188,59 @@
       </div>
     </header>
 
-    <div class="report-info">
-      <h3>Apa Itu Aspirasi?</h3>
-      <p>
-        Aspirasi adalah cara untuk menyampaikan ide, saran, atau kritik yang
-        membangun untuk perbaikan dan pengembangan. Dengan mengisi formulir ini,
-        Anda berkontribusi pada peningkatan kualitas dan pengalaman di
-        lingkungan kita. Kami menghargai setiap masukan dan berkomitmen untuk
-        mendengarkan serta merespons dengan serius.
-      </p>
-      <h3>Bagaimana Cara Menyampaikan Aspirasi?</h3>
-      <p>
-        Untuk menyampaikan aspirasi, kamu bisa mengisi form aspirasi yang telah
-        disediakan di situs ini. Pastikan aspirasi yang disampaikan jelas,
-        spesifik, dan mencerminkan keinginan atau kebutuhan yang ingin kamu
-        lihat terwujud di sekolah.
-      </p>
-      <h3>Apa yang Akan Dilakukan dengan Aspirasi yang Disampaikan?</h3>
-      <p>
-        Setiap aspirasi yang masuk akan ditinjau oleh pihak yang berwenang,
-        seperti MPK, dan diteruskan kepada pihak sekolah untuk ditindaklanjuti.
-        Aspirasi yang relevan dan dapat direalisasikan akan dipertimbangkan
-        sebagai bagian dari perencanaan program atau kegiatan sekolah.
-      </p>
-    </div>
-
-    <!-- aspirasi -->
+    <!-- Form Aspirasi -->
     <section id="report" class="report-form">
       <div class="container">
         <h2>Buat Aspirasi</h2>
-        <form action="#" method="post">
-          <label for="name">Nama:</label>
-          <input type="text" id="name" name="name" required />
+        <form id="aspirasi-form" action="#" method="post">
+          <div class="input-group">
+            <label for="name">Nama (Opsional):</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Masukkan nama Anda"
+              disabled
+            />
+          </div>
 
-          <label for="name">Kelas:</label>
-          <input type="text" id="kelas" name="kelas" required />
+          <div class="input-group">
+            <label for="kelas">Kelas:</label>
+            <select id="kelas" name="kelas" required>
+              <option value="">Pilih Kelas</option>
+              <option value="10">Kelas 10</option>
+              <option value="11">Kelas 11</option>
+              <option value="12">Kelas 12</option>
+            </select>
+          </div>
 
-          <label for="email">Whatsapp/ig (kontak yg bisa dihubungi):</label>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            placeholder="Tidak Wajib Diisi"
-          />
+          <div class="input-group">
+            <label for="contact"
+              >Whatsapp/IG (kontak yang bisa dihubungi):</label
+            >
+            <input
+              type="text"
+              id="contact"
+              name="contact"
+              placeholder="Tidak Wajib Diisi"
+            />
+          </div>
 
-          <label for="issue">Aspirasi:</label>
-          <textarea id="issue" name="issue" rows="4" required></textarea>
+          <div class="input-group">
+            <label for="issue">Aspirasi:</label>
+            <textarea
+              id="issue"
+              name="issue"
+              rows="4"
+              required
+              placeholder="Tulis aspirasi Anda di sini..."
+            ></textarea>
+          </div>
+
+          <div class="input-group anonim-toggle">
+            <input type="checkbox" id="anonim" name="anonim" checked />
+            <label for="anonim">Kirim sebagai Anonim</label>
+          </div>
 
           <button type="submit">Kirim Aspirasi</button>
         </form>
@@ -72,6 +252,53 @@
     <div class="footer">
       <p>© 2024 MPK - Created By Komisi D</p>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+      document.getElementById("anonim").addEventListener("change", function () {
+        const namaInput = document.getElementById("name");
+        if (this.checked) {
+          namaInput.disabled = true; // Nonaktifkan input nama
+          namaInput.value = ""; // Kosongkan nama jika anonim
+        } else {
+          namaInput.disabled = false; // Aktifkan input nama
+        }
+      });
+
+      document
+        .getElementById("aspirasi-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const anonimChecked = document.getElementById("anonim").checked;
+          const nama = document.getElementById("name").value;
+          const kelas = document.getElementById("kelas").value;
+          const contact = document.getElementById("contact").value;
+          const aspirasi = document.getElementById("issue").value;
+
+          // Validasi nama jika anonim tidak dicentang
+          if (!anonimChecked && !nama) {
+            alert("Silakan lengkapi nama Anda.");
+            return;
+          }
+
+          // Validasi kelas dan aspirasi
+          if (!kelas || !aspirasi) {
+            alert("Silakan lengkapi semua field yang diperlukan.");
+            return;
+          }
+
+          // Tampilkan informasi yang dikirim ke server (demo)
+          console.log({
+            anonim: anonimChecked,
+            nama: anonimChecked ? "Anonim" : nama,
+            kelas,
+            contact,
+            aspirasi,
+          });
+
+          alert("Aspirasi berhasil dikirim!");
+          this.reset(); // Reset form setelah submit
+        });
+    </script>
   </body>
 </html>
