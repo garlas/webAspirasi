@@ -6,12 +6,17 @@
     <title>ASPIRASI SMAN 1 GEDEG</title>
     <style>
       /* Gaya Umum */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
         font-family: "Poppins", sans-serif;
-        background-color: #141415;
-        color: #fff;
+        background-color: #f0f0f5;
+        color: #333;
         overflow-x: hidden;
-        margin: 0;
       }
 
       /* Navbar */
@@ -19,25 +24,41 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem 2rem;
+        padding: 0.5rem 1rem; /* Mengurangi padding agar navbar lebih kecil */
         position: fixed;
         width: 100%;
         top: 0;
-        background: rgba(141, 119, 119, 0.8);
+        background: rgba(255, 255, 255, 0.9);
         z-index: 1000;
-      }
-
-      .navbar img {
-        height: 60px;
-        animation: float 3s ease-in-out infinite;
+        transition: all 0.6s ease-in-out;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       }
 
       .navbar h3 {
-        font-size: 2rem; /* Sesuaikan ukuran font */
-        font-weight: 600;
-        color: #000;
-        margin: 0;
-        padding-right: 55px;
+        font-size: 1.2rem; /* Memperkecil ukuran font */
+        font-weight: 500;
+        letter-spacing: 1px;
+        color: #333;
+      }
+
+      .navbar img {
+        height: 50px; /* Memperkecil ukuran gambar logo */
+        animation: float 3s ease-in-out infinite;
+      }
+
+      /* Responsif untuk layar kecil */
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 0.5rem 0.8rem; /* Mengurangi padding pada layar lebih kecil */
+        }
+
+        .navbar h3 {
+          font-size: 1rem; /* Ukuran font lebih kecil pada layar kecil */
+        }
+
+        .navbar img {
+          height: 40px; /* Memperkecil logo pada layar kecil */
+        }
       }
 
       @keyframes float {
@@ -45,7 +66,7 @@
           transform: translateY(0);
         }
         50% {
-          transform: translateY(-10px);
+          transform: translateY(-7px);
         }
         100% {
           transform: translateY(0);
@@ -57,22 +78,23 @@
         max-width: 600px;
         margin: 6rem auto 2rem;
         padding: 2rem;
-        background-color: #1e1e1e;
-        border-radius: 12px;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-        position: relative;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 120px;
       }
 
       .report-form h2 {
         text-align: center;
         margin-bottom: 1.5rem;
-        color: #ffffff;
+        color: #3a3f51; /* Warna judul sesuai tema */
+        font-size: 2rem;
       }
 
       /* Input Group Styling */
       label {
         font-size: 1rem;
-        color: #cccccc;
+        color: #333;
         display: block;
         margin-bottom: 0.5rem;
       }
@@ -82,53 +104,39 @@
       select {
         width: 100%;
         padding: 0.75rem;
-        border: 1px solid #333;
-        border-radius: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
         font-size: 1rem;
         margin-bottom: 1rem;
-        background-color: #2a2a2a;
-        color: #ffffff;
+        background-color: #f5f5f5;
         transition: border-color 0.3s ease;
       }
 
       input[type="text"]:focus,
       textarea:focus,
       select:focus {
-        border-color: #3a9bff;
+        border-color: #3a3f51; /* Sesuaikan dengan warna utama */
         outline: none;
-      }
-
-      /* Checkbox Toggle */
-      .anonim-toggle {
-        display: flex;
-        align-items: center;
-        margin-bottom: 1rem;
-      }
-
-      .anonim-toggle label {
-        margin-left: 0.5rem;
-        font-size: 1rem;
-        color: #ffffff;
       }
 
       /* Tombol Submit */
       button {
-        background: linear-gradient(45deg, #ffdd57, #ff7a57);
+        background-color: #3a3f51;
+        color: white;
         border: none;
         padding: 0.75rem 2rem;
         font-size: 1.2rem;
-        color: white;
         border-radius: 50px;
         cursor: pointer;
-        transition: background 0.3s ease, box-shadow 0.3s ease;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
         font-weight: bold;
         display: block;
         margin: 0 auto;
       }
 
       button:hover {
-        background: linear-gradient(45deg, #ff7a57, #ffdd57);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        background-color: #2e3442;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
       }
 
       /* Back Home Link */
@@ -136,7 +144,7 @@
         display: block;
         text-align: center;
         margin-top: 1rem;
-        color: #3a9bff;
+        color: #3a3f51;
         text-decoration: none;
       }
 
@@ -144,9 +152,18 @@
         text-decoration: underline;
       }
 
+      .input-group.anonim-toggle {
+        display: flex;
+        align-items: center;
+      }
+
+      .input-group.anonim-toggle input {
+        margin-right: 0.5rem; /* Memberi jarak antara checkbox dan teks */
+      }
+
       /* Footer */
       .footer {
-        background-color: #14161f;
+        background-color: #f37335;
         color: white;
         text-align: center;
         padding: 1rem;
@@ -158,11 +175,9 @@
         .report-form {
           padding: 1.5rem;
         }
-        .report-form h2 {
-          font-size: 1.5rem;
-        }
+
         .navbar h3 {
-          font-size: 1.5rem; /* Sesuaikan ukuran font di navbar */
+          font-size: 1.5rem;
         }
       }
 
@@ -173,7 +188,7 @@
         }
 
         .navbar h3 {
-          font-size: 1.3rem; /* Sesuaikan ukuran font di navbar */
+          font-size: 1.3rem;
         }
       }
     </style>
@@ -182,7 +197,7 @@
     <!-- Navbar -->
     <header>
       <div class="navbar" id="navbar">
-        <img src="img/d.png" alt="Astronot Logo" />
+        <img src="img/d.png" alt="Logo" />
         <h3>MPK SMAGE</h3>
       </div>
     </header>
@@ -199,7 +214,6 @@
               id="name"
               name="name"
               placeholder="Masukkan nama Anda"
-              disabled
             />
           </div>
 
@@ -237,7 +251,7 @@
           </div>
 
           <div class="input-group anonim-toggle">
-            <input type="checkbox" id="anonim" name="anonim" checked />
+            <input type="checkbox" id="anonim" name="anonim" />
             <label for="anonim">Kirim sebagai Anonim</label>
           </div>
 
