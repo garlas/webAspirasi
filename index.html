@@ -17,8 +17,8 @@
 
       body {
         font-family: "Poppins", sans-serif;
-        background-color: #323438;
-        color: #000000;
+        background-color: #f0f0f5;
+        color: #333;
         overflow-x: hidden;
       }
 
@@ -27,24 +27,41 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem 2rem;
+        padding: 0.5rem 1rem; /* Mengurangi padding agar navbar lebih kecil */
         position: fixed;
         width: 100%;
         top: 0;
-        background: rgba(141, 119, 119, 0.5);
+        background: rgba(255, 255, 255, 0.9);
         z-index: 1000;
         transition: all 0.6s ease-in-out;
-      }
-
-      .navbar img {
-        height: 60px;
-        animation: float 3s ease-in-out infinite;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       }
 
       .navbar h3 {
-        font-size: 1.5rem;
-        font-weight: 600;
-        letter-spacing: 2px;
+        font-size: 1.2rem; /* Memperkecil ukuran font */
+        font-weight: 500;
+        letter-spacing: 1px;
+        color: #333;
+      }
+
+      .navbar img {
+        height: 50px; /* Memperkecil ukuran gambar logo */
+        animation: float 3s ease-in-out infinite;
+      }
+
+      /* Responsif untuk layar kecil */
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 0.5rem 0.8rem; /* Mengurangi padding pada layar lebih kecil */
+        }
+
+        .navbar h3 {
+          font-size: 1rem; /* Ukuran font lebih kecil pada layar kecil */
+        }
+
+        .navbar img {
+          height: 40px; /* Memperkecil logo pada layar kecil */
+        }
       }
 
       @keyframes float {
@@ -70,7 +87,7 @@
         text-align: center;
         padding: 0 1rem;
         border-radius: 30px;
-        box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
         overflow: hidden;
         max-width: 200%;
         margin: 100px auto 20px;
@@ -87,7 +104,7 @@
       .hero h2 {
         font-size: 3rem;
         margin-bottom: 1rem;
-        color: #c1c0bc;
+        color: #f0f0f5;
       }
 
       .hero p {
@@ -104,54 +121,46 @@
         align-items: center;
         margin: 2rem 0;
         padding: 1rem;
-        background-color: #444;
+        background-color: #eaeaea;
         border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        gap: 1rem; /* Memberikan jarak antar tombol */
-        flex-wrap: wrap; /* Agar tombol tidak terpotong di layar kecil */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        gap: 1rem;
+        flex-wrap: wrap;
       }
 
       .aspirasi-menu a {
-        color: #fff;
+        color: #333;
         text-decoration: none;
         font-size: 1.2rem;
         padding: 0.8rem 1.5rem;
-        border-radius: 50px; /* Membuat sudut membulat */
-        background: linear-gradient(
-          45deg,
-          #69634b,
-          #ff7a57
-        ); /* Gradien warna */
+        border-radius: 50px;
+        background: linear-gradient(45deg, #fdc830, #f37335);
         transition: all 0.3s ease, transform 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Memberikan efek bayangan */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         font-weight: bold;
       }
 
       .aspirasi-menu a:hover {
-        background: linear-gradient(
-          45deg,
-          #b67a6b,
-          #ffdd57
-        ); /* Gradien terbalik saat hover */
-        transform: translateY(-5px); /* Mengangkat tombol saat hover */
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Efek bayangan lebih tebal saat hover */
+        background: linear-gradient(45deg, #ffdd57, #b67a6b);
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
       }
 
       .aspirasi-menu a:active {
-        transform: translateY(0); /* Menurunkan tombol kembali saat diklik */
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Bayangan normal kembali */
+        transform: translateY(0);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       }
 
       @media (max-width: 768px) {
         .aspirasi-menu a {
           font-size: 1rem;
-          padding: 0.6rem 1rem; /* Penyesuaian ukuran tombol di layar kecil */
+          padding: 0.6rem 1rem;
         }
       }
 
       @media (max-width: 480px) {
         .aspirasi-menu {
-          flex-direction: column; /* Membuat tombol berbaris secara vertikal di layar kecil */
+          flex-direction: column;
         }
 
         .aspirasi-menu a {
@@ -167,28 +176,21 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
-        background: #222;
-        color: #fff;
-      }
-
-      .content h3,
-      .content p {
-        opacity: 0;
-        transform: translateY(50px);
-        transition: all 1s ease-in-out;
+        background: #ffffff;
+        color: #333;
       }
 
       .content h3 {
         font-size: 2.5rem;
         margin-bottom: 2rem;
-        color: #ffdd57;
+        color: #f37335;
       }
 
       .content p {
         font-size: 1.1rem;
         max-width: 800px;
         margin-bottom: 3rem;
-        color: #bbb;
+        color: #666;
       }
 
       /* Gallery */
@@ -218,7 +220,7 @@
 
       /* Footer */
       .footer {
-        background-color: #14161f;
+        background-color: #f37335;
         color: white;
         text-align: center;
         padding: 1rem;
@@ -285,8 +287,6 @@
       <a href="komisi.html">Anggota Komisi MPK</a>
     </div>
 
-    <div class="aspirasi-menu"></div>
-
     <!-- Section Content -->
     <section class="content">
       <h3 id="form-aspirasi">Tentang MPK</h3>
@@ -296,9 +296,8 @@
         juga MPK yaitu satu-satunya organisasi yang ada di sekolah dan
         dikhususkan untuk mengamati hasil kinerja OSIS.
       </p>
-      <!-- gambar halaman home -->
+      <!-- Gambar Galeri -->
       <div class="gallery" id="gallery">
-        <h1>MPK SMAN 1 GEDEG</h1>
         <img src="img/mpk1.jpg" alt="foto 1" />
         <img src="img/mpk2.jpg" alt="foto 2" />
         <img src="img/mpk3.jpg" alt="foto 3" />
@@ -306,9 +305,9 @@
     </section>
 
     <!-- Footer -->
-    <div class="footer">
-      <p>© 2024 MPK - Created By Komisi D</p>
-    </div>
+    <footer class="footer">
+      <p>Copyright © 2024 MPK SMAN 1 GEDEG</p>
+    </footer>
 
     <script>
       const contentSection = document.querySelector(".content");
