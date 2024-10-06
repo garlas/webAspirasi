@@ -96,20 +96,3 @@ document.addEventListener("DOMContentLoaded", function () {
       this.reset();
     });
 });
-
-// halaman komisi
-const toggleButtons = document.querySelectorAll(".toggle");
-const komisiBodies = document.querySelectorAll(".komisi-body");
-
-toggleButtons.forEach((button, index) => {
-  button.addEventListener("click", () => {
-    const komisiBody = komisiBodies[index];
-    if (komisiBody.style.display === "block") {
-      komisiBody.style.display = "none";
-      button.textContent = "+";
-    } else {
-      komisiBody.style.display = "block";
-      button.textContent = "-";
-    }
-  });
-});

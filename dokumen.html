@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Komisi D - Program Kerja</title>
+    <title>Komisi D - Aspirasi</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
       rel="stylesheet"
@@ -17,40 +17,54 @@
 
       body {
         font-family: "Poppins", sans-serif;
-        background: linear-gradient(135deg, #ffb88c 0%, #de6262 100%);
-        color: #f5f5f5;
-        overflow-x: hidden;
+        background-color: #f0f4f8;
+        color: #333;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         min-height: 100vh;
+        overflow-x: hidden;
       }
 
+      /* Navbar */
       .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem 2rem;
+        padding: 0.5rem 1rem; /* Mengurangi padding agar navbar lebih kecil */
         position: fixed;
         width: 100%;
         top: 0;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.9);
         z-index: 1000;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
         transition: all 0.6s ease-in-out;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar h1 {
+        font-size: 1.2rem; /* Memperkecil ukuran font */
+        font-weight: 500;
+        letter-spacing: 1px;
+        color: #333;
       }
 
       .navbar img {
-        height: 60px;
+        height: 50px; /* Memperkecil ukuran gambar logo */
         animation: float 3s ease-in-out infinite;
       }
 
-      .navbar h3 {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: #fff;
-        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+      /* Responsif untuk layar kecil */
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 0.5rem 0.8rem; /* Mengurangi padding pada layar lebih kecil */
+        }
+
+        .navbar h1 {
+          font-size: 1rem; /* Ukuran font lebih kecil pada layar kecil */
+        }
+
+        .navbar img {
+          height: 40px; /* Memperkecil logo pada layar kecil */
+        }
       }
 
       @keyframes float {
@@ -58,98 +72,101 @@
           transform: translateY(0);
         }
         50% {
-          transform: translateY(-10px);
+          transform: translateY(-7px);
         }
         100% {
           transform: translateY(0);
         }
       }
 
-      .container {
-        margin-top: 100px;
-        padding: 2rem;
+      h2 {
+        font-size: 2.5rem;
+        color: #16a085;
         text-align: center;
-        max-width: 900px;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 4rem 0 2rem; /* Margin atas yang lebih besar untuk menghindari tumpang tindih dengan navbar */
+        opacity: 0;
+        transform: translateY(50px);
+        animation: fadeIn 1s forwards;
       }
 
-      h2 {
-        font-size: 3rem;
-        margin-bottom: 2rem;
-        background: linear-gradient(135deg, #857d5f 0%, #372f2a 100%);
-        -webkit-background-clip: text;
-        color: transparent;
-        animation: fadeInText 1s ease-in-out;
+      .container {
+        padding: 2rem 1rem; /* Padding untuk konten */
+        flex-grow: 1; /* Menggunakan sisa ruang di antara header dan footer */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Mengatur konten agar terpusat */
       }
 
       .komisi {
-        margin: 2rem 0;
-        background: rgba(255, 255, 255, 0.2);
-        padding: 2rem;
-        border-radius: 20px;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        background: #ffffff;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         opacity: 0;
         transform: translateY(30px);
-        animation: fadeInBox 1s forwards ease-in-out;
+        animation: fadeInUp 0.7s forwards;
+        width: 100%;
+        max-width: 600px; /* Membatasi lebar maksimum */
+        text-align: center; /* Menjaga teks tetap terpusat */
+      }
+
+      .komisi:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+
+      .komisi:nth-child(3) {
+        animation-delay: 0.6s;
       }
 
       .komisi:hover {
-        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
-        transform: translateY(-10px);
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .komisi h3 {
+        color: #2c3e50;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
       }
 
       .komisi p {
+        color: #666;
+        font-size: 1rem;
         display: none;
-        margin-top: 1rem;
-        color: #eaeaea;
+        margin-top: 0.5rem; /* Menambahkan margin atas pada paragraf */
       }
 
       .komisi.active p {
         display: block;
-        animation: fadeInText 0.5s ease-in-out;
+        animation: slideDown 0.5s ease-in-out forwards;
       }
 
-      .back-button {
-        display: inline-block;
-        margin-top: 20px;
-        background: linear-gradient(135deg, #f76b1c 0%, #ffdd57 100%);
-        color: #fff;
-        padding: 15px 35px;
-        border-radius: 50px;
-        text-decoration: none;
-        font-size: 1.3rem;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-      }
-
-      .back-button:hover {
-        transform: scale(1.05);
-        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
-      }
-
-      .footer {
-        background-color: #14161f;
-        color: white;
-        text-align: center;
-        padding: 1rem;
-        margin-top: auto;
-      }
-
-      @keyframes fadeInText {
-        from {
+      @keyframes slideDown {
+        0% {
           opacity: 0;
-          transform: translateY(-20px);
+          max-height: 0;
         }
-        to {
+        100% {
+          opacity: 1;
+          max-height: 200px;
+        }
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        100% {
           opacity: 1;
           transform: translateY(0);
         }
       }
 
-      @keyframes fadeInBox {
+      @keyframes fadeInUp {
         0% {
           opacity: 0;
           transform: translateY(30px);
@@ -159,59 +176,128 @@
           transform: translateY(0);
         }
       }
+
+      .back-button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #e74c3c;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        text-align: center;
+      }
+
+      .back-button:hover {
+        background-color: #c0392b;
+      }
+
+      .footer {
+        background-color: #e0dfde;
+        color: rgb(23, 23, 23);
+        text-align: center;
+        padding: 1rem 0;
+        margin-top: auto;
+      }
+
+      .footer p {
+        font-size: 0.9rem;
+      }
+
+      /* Responsif */
+      @media (max-width: 768px) {
+        h2 {
+          font-size: 2rem;
+        }
+
+        .komisi h3 {
+          font-size: 1.4rem;
+        }
+
+        .container {
+          padding: 1rem;
+        }
+
+        .navbar h1 {
+          font-size: 1.2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .komisi {
+          padding: 1rem;
+        }
+
+        h2 {
+          font-size: 1.8rem;
+        }
+      }
     </style>
   </head>
   <body>
     <!-- Navbar -->
-    <header>
-      <div class="navbar" id="navbar">
-        <img src="img/d.png" alt="Astronot Logo" />
-        <h3>MPK SMAGE</h3>
-      </div>
+    <header class="navbar" id="navbar">
+      <img src="img/d.png" alt="Logo" />
+      <h1>MPK SMAGE</h1>
     </header>
 
+    <!-- Konten Aspirasi -->
     <div class="container">
-      <h2>Program Kerja Komisi D</h2>
+      <h2>Daftar Proker Komisi D</h2>
 
-      <div class="komisi" id="komisiD1">
-        <h3>Proker 1: Pengumpulan Aspirasi</h3>
+      <div class="komisi" id="komisi1">
+        <h3>Aspirasi Box</h3>
         <p>
-          Mengumpulkan aspirasi dari seluruh siswa melalui media yang disediakan
-          secara online maupun offline. Proses ini dilakukan setiap bulan untuk
-          menjaga kualitas fasilitas dan event sekolah.
+          Aspirasi Box adalah inisiatif untuk menyediakan wadah fisik di mana
+          siswa dapat menyampaikan aspirasi, ide, dan masukan mereka secara
+          langsung. Dengan meletakkan kotak aspirasi dibagian-bagian sekolah,
+          kami berusaha menciptakan lingkungan yang mendukung komunikasi dua
+          arah antara siswa dan pengurus OSIS/MPK.
         </p>
       </div>
 
-      <div class="komisi" id="komisiD2">
-        <h3>Proker 2: Survey Kepuasan Siswa</h3>
+      <div class="komisi" id="komisi2">
+        <h3>Aspirasi Online</h3>
         <p>
-          Melakukan survey kepuasan siswa setelah event-event sekolah untuk
-          memastikan bahwa kebutuhan dan harapan siswa terpenuhi dengan baik.
+          Aspirasi Online adalah platform digital yang dirancang untuk
+          memfasilitasi pengumpulan aspirasi dan ide dari seluruh siswa. Melalui
+          inisiatif ini, siswa dapat dengan mudah menyampaikan harapan dan
+          masukan mereka tanpa harus bertatap muka, menjadikan proses lebih
+          efisien.
         </p>
       </div>
 
-      <div class="komisi" id="komisiD3">
-        <h3>Proker 3: Forum Diskusi Bulanan</h3>
+      <div class="komisi" id="komisi3">
+        <h3>Aspiration Day</h3>
         <p>
-          Mengadakan forum diskusi antara OSIS, MPK, dan siswa untuk membahas
-          aspirasi serta memberikan feedback langsung kepada pihak terkait.
+          Hari Aspirasi adalah inisiatif untuk mengumpulkan berbagai aspirasi
+          dan ide dari seluruh kelas di sekolah. Kegiatan ini bertujuan untuk
+          mendengarkan suara siswa dan memastikan bahwa setiap aspirasi
+          diperhitungkan dalam perencanaan acara yang akan datang.
         </p>
       </div>
 
-      <a class="back-button" href="index.html">Kembali</a>
+      <a class="back-button" href="index.html">Kembali ke Halaman Utama</a>
     </div>
 
-    <div class="footer">
-      <p>© 2024 MPK - Created By Komisi D</p>
-    </div>
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2024 Komisi D - MPK SMAGE</p>
+    </footer>
 
     <script>
-      // Animasi muncul komisi
-      document.querySelectorAll(".komisi").forEach((komisi, index) => {
-        komisi.style.animationDelay = `${index * 0.3}s`;
+      // Animasi navbar hide saat scroll down
+      window.addEventListener("scroll", function () {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
       });
 
-      // Toggle deskripsi komisi
+      // Menampilkan deskripsi saat diklik
       document.querySelectorAll(".komisi").forEach((komisi) => {
         komisi.addEventListener("click", () => {
           komisi.classList.toggle("active");
