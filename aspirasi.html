@@ -219,7 +219,12 @@
 
           <div class="input-group">
             <label for="kelas">Kelas:</label>
-            <select id="kelas" name="kelas" required>
+            <select
+              id="kelas"
+              name="kelas"
+              required
+              onchange="disableFirstOption()"
+            >
               <option value="">Pilih Kelas</option>
               <option value="10">Kelas 10</option>
               <option value="11">Kelas 11</option>
@@ -267,5 +272,13 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+      function disableFirstOption() {
+        var select = document.getElementById("kelas");
+        if (select.value !== "") {
+          select.options[0].disabled = true;
+        }
+      }
+    </script>
   </body>
 </html>
