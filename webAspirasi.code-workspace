@@ -1,0 +1,13 @@
+{
+  "folders": [
+	{
+		"path": "."
+	},
+	{
+		"path": "../webtest"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "webAspirasi"
+  }
+}
