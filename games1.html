@@ -1,237 +1,164 @@
-<!DOCTYPE html>
-<html lang="id">
+<html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pilihan Game</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>CrazyGames</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
       body {
-        font-family: "Poppins", sans-serif;
-        background: #f9f9f9;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        text-align: center;
-        color: #333;
+        font-family: "Roboto", sans-serif;
       }
 
-      h1 {
-        font-size: 3rem;
-        font-weight: bold;
-        color: #ff61a6;
-        margin-bottom: 20px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        animation: fadeIn 2s ease-in-out;
-      }
-
-      p {
-        font-size: 1.1rem;
-        margin: 10px 0;
-        color: #555;
-        font-weight: 500;
-      }
-
-      .slider-container {
-        position: relative;
-        width: 90%;
-        max-width: 1000px;
-        overflow: hidden;
-        margin-bottom: 30px;
-      }
-
-      .slider {
-        display: flex;
-        transition: transform 0.5s ease;
-      }
-
-      .game-card {
-        flex: 0 0 100%;
-        background: linear-gradient(135deg, #ff61a6, #6a5acd);
-        border-radius: 20px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        padding: 25px;
-        text-align: center;
+      button:hover {
+        background-color: rgba(255, 255, 255, 0.2);
         cursor: pointer;
-        transition: all 0.3s ease;
-        position: relative;
-      }
-
-      .game-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-      }
-
-      .game-card img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-        border-radius: 15px;
-        margin-bottom: 15px;
-        filter: brightness(80%);
-        transition: all 0.3s ease;
-      }
-
-      .game-card:hover img {
-        filter: brightness(100%);
-      }
-
-      .game-card h2 {
-        font-size: 1.8rem;
-        color: #fff;
-        margin-bottom: 15px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      }
-
-      .game-card p {
-        font-size: 1rem;
-        color: #fff;
-        margin-bottom: 20px;
-      }
-
-      .button {
-        padding: 12px 25px;
-        background-color: #4caf50;
-        color: white;
-        border: none;
-        border-radius: 25px;
-        font-size: 1.1rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .button:hover {
-        background-color: #45a049;
-        transform: translateY(-5px);
-      }
-
-      .button:active {
-        transform: translateY(2px);
-      }
-
-      /* Navigation Arrows */
-      .nav-button {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: rgba(0, 0, 0, 0.5);
-        color: #fff;
-        padding: 15px;
-        border: none;
-        font-size: 2rem;
-        cursor: pointer;
-        z-index: 1;
-        border-radius: 50%;
-        transition: background-color 0.3s ease;
-      }
-
-      .prev {
-        left: 10px;
-      }
-
-      .next {
-        right: 10px;
-      }
-
-      .nav-button:hover {
-        background-color: #ff61a6;
-      }
-
-      /* FadeIn Animation */
-      @keyframes fadeIn {
-        0% {
-          opacity: 0;
-          transform: translateY(-50px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @media (max-width: 768px) {
-        h1 {
-          font-size: 2.2rem;
-        }
-
-        .slider-container {
-          width: 100%;
-          max-width: 600px;
-        }
-
-        .game-card img {
-          height: 160px;
-        }
-
-        .button {
-          font-size: 1rem;
-        }
       }
     </style>
   </head>
-  <body>
-    <h1>Selamat Datang di Pilihan Game</h1>
-    <p>Temukan game seru yang ingin kamu mainkan</p>
-
-    <div class="slider-container">
-      <div class="slider">
-        <!-- Game 1 -->
-        <div class="game-card" onclick="window.location.href='games.html'">
-          <img
-            src="https://via.placeholder.com/300x200.png?text=Game+1"
-            alt="Game 1"
-          />
-          <h2>Game Tebak Angka</h2>
-          <p>Uji kemampuanmu menebak angka antara 1 sampai 100!</p>
-          <button class="button">Mainkan</button>
-        </div>
-
-        <!-- Game 2 -->
-        <div class="game-card" onclick="window.location.href='game2.html'">
-          <img
-            src="https://via.placeholder.com/300x200.png?text=Game+2"
-            alt="Game 2"
-          />
-          <h2>Game Tebak Warna</h2>
-          <p>Tebak warna yang tepat dalam waktu terbatas!</p>
-          <button class="button">Mainkan</button>
-        </div>
-
-        <!-- Game 3 -->
-        <div class="game-card" onclick="window.location.href='game3.html'">
-          <img
-            src="https://via.placeholder.com/300x200.png?text=Game+3"
-            alt="Game 3"
-          />
-          <h2>Game Memory</h2>
-          <p>Latih ingatanmu dengan permainan memory!</p>
-          <button class="button">Mainkan</button>
-        </div>
+  <body class="bg-gray-900 text-white">
+    <header class="bg-gray-800 p-4 flex items-center justify-between">
+      <div class="flex items-center space-x-4">
+        <button
+          class="text-white text-2xl"
+          onclick="alert('Menu opened!')"
+          title="Menu"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="text-white text-2xl font-bold">CrazyGames</div>
       </div>
-
-      <!-- Navigation Arrows -->
-      <button class="nav-button prev" onclick="moveSlide(-1)">&#10094;</button>
-      <button class="nav-button next" onclick="moveSlide(1)">&#10095;</button>
+      <div class="flex items-center space-x-4">
+        <input
+          class="bg-gray-700 text-white p-2 rounded"
+          placeholder="Search"
+          type="text"
+          id="searchInput"
+        />
+        <button
+          class="text-white text-2xl"
+          onclick="searchGames()"
+          title="Search"
+        >
+          <i class="fas fa-search"></i>
+        </button>
+        <button
+          class="text-white text-2xl"
+          onclick="alert('User Profile clicked!')"
+          title="User Profile"
+        >
+          <i class="fas fa-user"></i>
+        </button>
+        <button
+          class="text-white text-2xl"
+          onclick="alert('Favorites clicked!')"
+          title="Favorites"
+        >
+          <i class="fas fa-heart"></i>
+        </button>
+        <button
+          class="bg-blue-600 text-white px-4 py-2 rounded"
+          onclick="alert('Log in clicked!')"
+          title="Log in"
+        >
+          Log in
+        </button>
+      </div>
+    </header>
+    <div class="flex">
+      <aside class="bg-gray-800 w-16 flex flex-col items-center space-y-4 py-4">
+        <button
+          class="text-white text-2xl"
+          onclick="alert('Home clicked!')"
+          title="Home"
+        >
+          <i class="fas fa-home"></i>
+        </button>
+        <button
+          class="text-white text-2xl"
+          onclick="alert('Trending clicked!')"
+          title="Trending"
+        >
+          <i class="fas fa-fire"></i>
+        </button>
+        <button
+          class="text-white text-2xl"
+          onclick="alert('Night Mode clicked!')"
+          title="Night Mode"
+        >
+          <i class="fas fa-moon"></i>
+        </button>
+        <button
+          class="text-white text-2xl"
+          onclick="alert('Games clicked!')"
+          title="Games"
+        >
+          <i class="fas fa-gamepad"></i>
+        </button>
+        <button
+          class="text-white text-2xl"
+          onclick="alert('Community clicked!')"
+          title="Community"
+        >
+          <i class="fas fa-users"></i>
+        </button>
+        <button
+          class="text-white text-2xl"
+          onclick="alert('Sports clicked!')"
+          title="Sports"
+        >
+          <i class="fas fa-basketball-ball"></i>
+        </button>
+        <button
+          class="text-white text-2xl"
+          onclick="alert('Rocket clicked!')"
+          title="Rocket"
+        >
+          <i class="fas fa-rocket"></i>
+        </button>
+        <button
+          class="text-white text-2xl"
+          onclick="alert('Puzzle clicked!')"
+          title="Puzzle"
+        >
+          <i class="fas fa-puzzle-piece"></i>
+        </button>
+      </aside>
+      <main class="flex-1 p-4">
+        <h1 class="text-3xl font-bold mb-4">Welcome to CrazyGames</h1>
+        <div class="grid grid-cols-3 gap-4">
+          <img
+            alt="Game 1"
+            class="rounded cursor-pointer"
+            src="https://storage.googleapis.com/a1aa/image/hrHecy6c62x2EaBQjRV8pE9IhWVufiSEuekLVPI8Qwdi6jjnA.jpg"
+            onclick="alert('Game 1 selected!')"
+          />
+          <img
+            alt="Game 2"
+            class="rounded cursor-pointer"
+            src="https://storage.googleapis.com/a1aa/image/ES6wwYmYjeX9aaFffN2pmI0TbBgFdvfleet26N95op7PSf44JA.jpg"
+            onclick="alert('Game 2 selected!')"
+          />
+          <img
+            alt="Game 3"
+            class="rounded cursor-pointer"
+            src="https://storage.googleapis.com/a1aa/image/SaIIysMpniZcB1KUmH7Sf9ybM6i1ujwFrlkXx1lHZ9SrexxTA.jpg"
+            onclick="alert('Game 3 selected!')"
+          />
+        </div>
+      </main>
     </div>
-
     <script>
-      let currentSlide = 0;
-      const slides = document.querySelector(".slider");
-      const totalSlides = document.querySelectorAll(".game-card").length;
-
-      function moveSlide(direction) {
-        currentSlide += direction;
-        if (currentSlide < 0) currentSlide = totalSlides - 1;
-        if (currentSlide >= totalSlides) currentSlide = 0;
-        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+      function searchGames() {
+        const query = document.getElementById("searchInput").value;
+        alert("Searching for: " + query);
       }
     </script>
   </body>

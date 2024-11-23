@@ -203,69 +203,48 @@
       </div>
     </header>
 
-    <!-- Form Aspirasi -->
-    <section id="report" class="report-form">
-      <div class="container">
-        <h2>Buat Aspirasi</h2>
-        <form id="aspirasi-form" action="#" method="post">
-          <div class="input-group">
-            <label for="name">Nama (Opsional):</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Masukkan nama Anda"
-            />
-          </div>
-
-          <div class="input-group">
-            <label for="kelas">Kelas:</label>
-            <select
-              id="kelas"
-              name="kelas"
-              required
-              onchange="disableFirstOption()"
-            >
-              <option value="">Pilih Kelas</option>
-              <option value="10">Kelas 10</option>
-              <option value="11">Kelas 11</option>
-              <option value="12">Kelas 12</option>
-            </select>
-          </div>
-
-          <div class="input-group">
-            <label for="contact"
-              >Whatsapp/IG (kontak yang bisa dihubungi):</label
-            >
-            <input
-              type="text"
-              id="contact"
-              name="contact"
-              placeholder="Tidak Wajib Diisi"
-            />
-          </div>
-
-          <div class="input-group">
-            <label for="issue">Aspirasi:</label>
-            <textarea
-              id="issue"
-              name="issue"
-              rows="4"
-              required
-              placeholder="Tulis aspirasi Anda di sini..."
-            ></textarea>
-          </div>
-
-          <div class="input-group anonim-toggle">
-            <input type="checkbox" id="anonim" name="anonim" />
-            <label for="anonim">Kirim sebagai Anonim</label>
-          </div>
-
-          <button type="submit">Kirim Aspirasi</button>
-        </form>
-        <a href="index.html" class="back-home">Back Home</a>
+ <!-- Form Aspirasi -->
+<section id="report" class="report-form">
+  <div class="container">
+    <h2>Buat Aspirasi</h2>
+    <form id="aspirasi-form" action="proses.php" method="post">
+      <div class="input-group">
+        <label for="name">Nama (Opsional):</label>
+        <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" />
       </div>
-    </section>
+
+      <div class="input-group">
+        <label for="kelas">Kelas:</label>
+        <select id="kelas" name="kelas" required>
+          <option value="" disabled selected>Pilih Kelas</option>
+          <option value="10">Kelas 10</option>
+          <option value="11">Kelas 11</option>
+          <option value="12">Kelas 12</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="contact">Whatsapp/IG (kontak yang bisa dihubungi):</label>
+        <input type="text" id="contact" name="contact" placeholder="Tidak Wajib Diisi" />
+      </div>
+
+      <div class="input-group">
+        <label for="issue">Aspirasi:</label>
+        <textarea id="issue" name="issue" rows="4" required placeholder="Tulis aspirasi Anda di sini..."></textarea>
+      </div>
+
+      <div class="input-group anonim-toggle">
+        <input type="checkbox" id="anonim" name="anonim" />
+        <label for="anonim">Kirim sebagai Anonim</label>
+      </div>
+
+      <button type="submit">Kirim Aspirasi</button>
+    </form>
+    <a href="index.php" class="back-home">Back Home</a>
+  </div>
+</section>
+
+
 
     <!-- Footer -->
     <div class="footer">

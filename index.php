@@ -169,6 +169,27 @@
         }
       }
 
+      .aspirasi-counter {
+        text-align: center;
+        margin-top: 2rem;
+        padding: 1rem;
+        background-color: #e0dfde;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .aspirasi-counter h4 {
+        font-size: 1.5rem;
+        color: #333;
+      }
+
+      .aspirasi-counter p {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #f37335;
+        margin-top: 0.5rem;
+      }
+
       /* Section Content */
       .content {
         padding: 5rem 2rem;
@@ -281,13 +302,41 @@
     <!-- Menu Aspirasi -->
     <div class="aspirasi-menu">
       <a href="info.html">Pelajari Tentang Aspirasi</a>
-      <a href="aspirasi.html">Form Aspirasi</a>
+      <a href="aspirasi.php">Form Aspirasi</a>
       <a href="#form-aspirasi">Tentang MPK</a>
       <a href="dokumen.html">Program Kerja</a>
       <a href="games1.html">Games</a>
       <!-- <a href="struktur.html">Anggota Inti MPK</a> -->
       <!-- <a href="komisi.html">Anggota Komisi MPK</a> -->
     </div>
+
+    <?php
+include 'db.php'; // Menghubungkan dengan file koneksi database
+
+// Ambil jumlah aspirasi dari tabel
+$sql = "SELECT jumlah FROM aspirasi WHERE id = 1";
+$result = $conn->query($sql);
+
+// Pastikan data ditemukan dan disimpan ke dalam variabel
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $jumlah = $row['jumlah']; // Menyimpan jumlah ke dalam variabel $jumlah
+} else {
+    $jumlah = 0; // Jika tidak ada data, set jumlah sebagai 0
+}
+
+$conn->close();
+?>
+
+<!-- Menampilkan jumlah aspirasi -->
+<div class="aspirasi-counter">
+    <h4>Jumlah Aspirasi Terkirim:</h4>
+    <p id="aspirasi-count"><?php echo $jumlah; ?></p> <!-- Menampilkan jumlah -->
+</div>
+
+
+
+
 
     <!-- Section Content -->
     <section class="content">
