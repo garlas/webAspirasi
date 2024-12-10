@@ -115,81 +115,42 @@
       }
 
       /* Menu Aspirasi */
-    .aspirasi-menu {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin: 2rem 0;
-      padding: 1rem;
-      background-color: #eaeaea;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      gap: 1rem;
-      width: 80%;
-      max-width: 400px;
-      margin: 50px auto;
-    }
-
-    .aspirasi-menu a {
-      display: none; /* Disembunyikan secara default */
-      color: #333;
-      text-decoration: none;
-      font-size: 1.2rem;
-      padding: 0.8rem 1.5rem;
-      border-radius: 50px;
-      background: linear-gradient(45deg, #fdc830, #f37335);
-      transition: all 0.3s ease, transform 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      font-weight: bold;
-      width: 100%;
-      text-align: center;
-    }
-
-    .aspirasi-menu a.show {
-      display: block; /* Tampilkan menu saat memiliki class 'show' */
-      animation: fadeIn 0.5s ease-in-out;
-    }
-
-    .aspirasi-menu a:hover {
-      background: linear-gradient(45deg, #ffdd57, #b67a6b);
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .aspirasi-menu a:active {
-      transform: translateY(0);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Animasi FadeIn */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
+      .aspirasi-menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 2rem 0;
+        padding: 1rem;
+        background-color: #eaeaea;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        gap: 1rem;
+        flex-wrap: wrap;
       }
-      to {
-        opacity: 1;
+
+      .aspirasi-menu a {
+        color: #333;
+        text-decoration: none;
+        font-size: 1.2rem;
+        padding: 0.8rem 1.5rem;
+        border-radius: 50px;
+        background: linear-gradient(45deg, #fdc830, #f37335);
+        transition: all 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        font-weight: bold;
+      }
+
+      .aspirasi-menu a:hover {
+        background: linear-gradient(45deg, #ffdd57, #b67a6b);
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .aspirasi-menu a:active {
         transform: translateY(0);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       }
-    }
 
-    /* Tombol untuk Menampilkan Menu */
-    .toggle-btn {
-      background: linear-gradient(45deg, #6dd5ed, #2193b0);
-      color: #fff;
-      font-size: 1rem;
-      padding: 0.8rem 1.5rem;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .toggle-btn:hover {
-      background: linear-gradient(45deg, #2193b0, #6dd5ed);
-    }
       @media (max-width: 768px) {
         .aspirasi-menu a {
           font-size: 1rem;
@@ -349,7 +310,7 @@
       <!-- <a href="komisi.html">Anggota Komisi MPK</a>  -->
     </div>
 
-<?php
+    <?php
 include 'db.php'; // Menghubungkan dengan file koneksi database
 
 // Ambil jumlah aspirasi dari tabel
@@ -367,7 +328,7 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 
-    <!-- Menampilkan jumlah aspirasi -->
+ <!-- Menampilkan jumlah aspirasi -->
     <div class="aspirasi-counter">
       <h4>Jumlah Aspirasi Terkirim:</h4>
       <p id="aspirasi-count"><?php echo $jumlah; ?></p>
