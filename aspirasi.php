@@ -207,7 +207,7 @@
     <section id="report" class="report-form">
       <div class="container">
         <h2>Buat Aspirasi</h2>
-        <form id="aspirasi-form" method="post">
+        <form id="aspirasi-form" method="post" action="proses.php">
           <div class="input-group">
             <label for="name">Nama (Opsional):</label>
             <input
@@ -256,9 +256,9 @@
             <label for="anonim">Kirim sebagai Anonim</label>
           </div>
 
-          <button type="submit">Kirim Aspirasi</button>
+          <button type="submit" name="submit">Kirim Aspirasi</button>
         </form>
-        <a href="index.html" class="back-home">Back Home</a>
+        <a href="index.php" class="back-home">Back Home</a>
       </div>
     </section>
 
@@ -267,14 +267,20 @@
       <p>&copy; 2024 Komisi D - MPK SMAGE</p>
     </div>
 
-    <script src="script.js"></script>
     <script>
-      function disableFirstOption() {
-        var select = document.getElementById("kelas");
-        if (select.value !== "") {
-          select.options[0].disabled = true;
+      const anonimCheckbox = document.getElementById("anonim");
+      const namaInput = document.getElementById("name");
+      const form = document.getElementById("aspirasi-form");
+
+      // Mengaktifkan/memblokir input nama berdasarkan checkbox anonim
+      anonimCheckbox.addEventListener("change", function () {
+        if (this.checked) {
+          namaInput.disabled = true;
+          namaInput.value = "";
+        } else {
+          namaInput.disabled = false;
         }
-      }
+      });
     </script>
   </body>
 </html>

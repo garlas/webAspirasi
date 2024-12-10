@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Event listener untuk form submit
   form.addEventListener("submit", function (event) {
     event.preventDefault(); // Mencegah pengiriman default form
 
@@ -23,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const contact = document.getElementById("contact").value.trim();
     const aspirasi = document.getElementById("issue").value.trim();
 
-    // Validasi input
     if (!anonimChecked && !nama) {
       alert("Silakan lengkapi nama Anda.");
       return;
@@ -37,11 +35,10 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // URL webhook Discord
     const webhookURL =
       "https://discord.com/api/webhooks/1307261966066122762/Cj5IEMbLHkd6d2sSQXnrjmsIaJoxc-vPWan2hcsZ0qg9VCYrUlLOZ5fjnvVPdqFQ0MTL";
 
-    // Fungsi untuk membagi teks panjang menjadi potongan kecil
+    const maxLength = 1024;
     function splitText(text, maxLength) {
       const result = [];
       for (let i = 0; i < text.length; i += maxLength) {
@@ -50,10 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
       return result;
     }
 
-    const maxLength = 1024; // Panjang maksimal teks Discord
     const aspirasiParts = splitText(aspirasi, maxLength);
 
-    // Data embed untuk Discord
     const embed = {
       title: "🚀 Aspirasi Baru",
       description: "Detail dari aspirasi yang baru dikirim:",
@@ -64,23 +59,12 @@ document.addEventListener("DOMContentLoaded", function () {
           value: anonimChecked ? "Anonim" : nama,
           inline: true,
         },
-        {
-          name: "Kelas",
-          value: kelas,
-          inline: true,
-        },
-        {
-          name: "Kontak",
-          value: contact || "Tidak ada kontak",
-          inline: true,
-        },
+        { name: "Kelas", value: kelas, inline: true },
+        { name: "Kontak", value: contact || "Tidak ada kontak", inline: true },
       ],
-      footer: {
-        text: "Dikirim melalui sistem aspirasi.",
-      },
+      footer: { text: "Dikirim melalui sistem aspirasi." },
     };
 
-    // Menambahkan bagian aspirasi ke dalam field
     aspirasiParts.forEach((part, index) => {
       embed.fields.push({
         name: `Aspirasi (Bagian ${index + 1})`,
@@ -88,21 +72,27 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    // Mengirim data ke webhook Discord
     fetch(webhookURL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ embeds: [embed] }),
     })
       .then((response) => {
-        if (!response.ok) {
+        if (!response.ok)
           throw new Error("Gagal mengirim data ke webhook Discord.");
-        }
+
+        // AJAX ke server PHP untuk memperbarui jumlah
+        return fetch("proses.php", {
+          method: "POST",
+        });
+      })
+      .then((phpResponse) => {
+        if (!phpResponse.ok)
+          throw new Error("Gagal memperbarui jumlah di database.");
+
         alert("Aspirasi berhasil dikirim!");
-        form.reset(); // Reset form setelah sukses
-        namaInput.disabled = anonimChecked; // Atur ulang status input nama
+        form.reset();
+        namaInput.disabled = anonimChecked;
       })
       .catch((error) => {
         console.error("Kesalahan:", error);

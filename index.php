@@ -299,15 +299,30 @@
       </p>
     </div>
 
-    <!-- Menu Aspirasi -->
+    <!-- Menu Aspirasi --> 
     <div class="aspirasi-menu">
-      <a href="info.html">Pelajari Tentang Aspirasi</a>
-      <a href="aspirasi.html">Form Aspirasi</a>
+      <!-- <a href="info.php">Pelajari Tentang Aspirasi</a> -->
+      <a href="aspirasi.php">Form Aspirasi</a>
       <a href="#form-aspirasi">Tentang MPK</a>
-      <a href="dokumen.html">Program Kerja</a>
-      <a href="games1.html">Games</a>
-      <!-- <a href="struktur.html">Anggota Inti MPK</a> -->
-      <!-- <a href="komisi.html">Anggota Komisi MPK</a> -->
+      <a href="dokumen.php">Program Kerja</a>
+      <a href="login.php">Login</a> 
+     <!-- <a href="struktur.html">Anggota Inti MPK</a> -->
+      <!-- <a href="komisi.html">Anggota Komisi MPK</a>  -->
+    </div>
+
+    <?php
+include 'db.php'; // Menghubungkan dengan file koneksi database
+
+// Ambil jumlah aspirasi dari tabel
+$sql = "SELECT jumlah FROM counter WHERE id = 1";
+$result = $conn->query($sql); if ($result->num_rows > 0) { // Ambil data jumlah
+    yang ada $row = $result->fetch_assoc(); $jumlah = $row['jumlah']; } else {
+    $jumlah = 0; // Jika tidak ada data, anggap jumlah = 0 } $conn->close(); ?>
+
+    <!-- Menampilkan jumlah aspirasi -->
+    <div class="aspirasi-counter">
+      <h4>Jumlah Aspirasi Terkirim:</h4>
+      <p id="aspirasi-count"><?php echo $jumlah; ?></p>
     </div>
 
     <!-- Section Content -->
