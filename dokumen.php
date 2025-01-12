@@ -268,17 +268,7 @@
         </p>
       </div>
 
-      <div class="komisi" id="komisi3">
-        <h3>Aspiration Day</h3>
-        <p>
-          Hari Aspirasi adalah inisiatif untuk mengumpulkan berbagai aspirasi
-          dan ide dari seluruh kelas di sekolah. Kegiatan ini bertujuan untuk
-          mendengarkan suara siswa dan memastikan bahwa setiap aspirasi
-          diperhitungkan dalam perencanaan acara yang akan datang.
-        </p>
-      </div>
-
-      <a class="back-button" href="index.html">Kembali ke Halaman Utama</a>
+      <a class="back-button" href="index.php">Kembali ke Halaman Utama</a>
     </div>
 
     <!-- Footer -->

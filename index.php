@@ -79,18 +79,19 @@
       /* Hero Section */
       .hero {
         height: calc(100vh - 10px);
+        max-height: 600px; /* Batas maksimum tinggi */
         background: url("img/q.jpeg") no-repeat center center/cover;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         text-align: center;
-        padding: 0 1rem;
+        padding: 0 2rem; /* Tambahkan padding horizontal */
         border-radius: 30px;
         box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
         overflow: hidden;
-        max-width: 200%;
-        margin: 100px auto 20px;
+        max-width: 90%; /* Batasi lebar keseluruhan */
+        margin: 100px auto 20px; /* Jarak di kanan dan kiri */
       }
 
       .hero h2,
@@ -114,9 +115,19 @@
         color: #ddd;
       }
 
+      /* Responsif untuk layar besar (laptop) */
+      @media (min-width: 1024px) and (max-width: 1440px) {
+        .hero {
+          height: 500px;
+          max-width: 80%; /* Persempit lebar hero */
+          padding: 0 3rem; /* Tambahkan padding lebih banyak di laptop */
+          background-size: cover;
+        }
+      }
       /* Menu Aspirasi */
       .aspirasi-menu {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         margin: 2rem 0;
@@ -125,10 +136,13 @@
         border-radius: 10px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         gap: 1rem;
-        flex-wrap: wrap;
+        width: 80%;
+        max-width: 400px;
+        margin: 50px auto;
       }
 
       .aspirasi-menu a {
+        display: none; /* Disembunyikan secara default */
         color: #333;
         text-decoration: none;
         font-size: 1.2rem;
@@ -138,6 +152,13 @@
         transition: all 0.3s ease, transform 0.3s ease;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         font-weight: bold;
+        width: 100%;
+        text-align: center;
+      }
+
+      .aspirasi-menu a.show {
+        display: block; /* Tampilkan menu saat memiliki class 'show' */
+        animation: fadeIn 0.5s ease-in-out;
       }
 
       .aspirasi-menu a:hover {
@@ -149,6 +170,35 @@
       .aspirasi-menu a:active {
         transform: translateY(0);
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Animasi FadeIn */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Tombol untuk Menampilkan Menu */
+      .toggle-btn {
+        background: linear-gradient(45deg, #6dd5ed, #2193b0);
+        color: #fff;
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .toggle-btn:hover {
+        background: linear-gradient(45deg, #2193b0, #6dd5ed);
       }
 
       @media (max-width: 768px) {
@@ -299,18 +349,16 @@
       </p>
     </div>
 
-    <!-- Menu Aspirasi --> 
+    <!--menu aspirasi-->
     <div class="aspirasi-menu">
-      <!-- <a href="info.php">Pelajari Tentang Aspirasi</a> -->
-      <a href="aspirasi.php">Form Aspirasi</a>
+      <a href="aspirasi.php" class="show">Kirim Aspirasi</a>
       <a href="#form-aspirasi">Tentang MPK</a>
       <a href="dokumen.php">Program Kerja</a>
-      <a href="login.php">Login</a> 
-     <!-- <a href="struktur.html">Anggota Inti MPK</a> -->
-      <!-- <a href="komisi.html">Anggota Komisi MPK</a>  -->
+      <a href="login.php">Admin</a>
+      <button class="toggle-btn" onclick="showNextMenu()">⇩</button>
     </div>
 
-    <?php
+<?php
 include 'db.php'; // Menghubungkan dengan file koneksi database
 
 // Ambil jumlah aspirasi dari tabel
@@ -328,7 +376,8 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 
- <!-- Menampilkan jumlah aspirasi -->
+
+    <!-- Menampilkan jumlah aspirasi -->
     <div class="aspirasi-counter">
       <h4>Jumlah Aspirasi Terkirim:</h4>
       <p id="aspirasi-count"><?php echo $jumlah; ?></p>
@@ -357,6 +406,19 @@ $conn->close();
     </footer>
 
     <script>
+      let currentIndex = 0;
+      const menuLinks = document.querySelectorAll(".aspirasi-menu a");
+      const toggleButton = document.querySelector(".toggle-btn");
+
+      function showNextMenu() {
+        if (currentIndex < menuLinks.length - 1) {
+          currentIndex++;
+          menuLinks[currentIndex].classList.add("show");
+        } else {
+          toggleButton.style.display = "none"; // Sembunyikan tombol setelah semua menu ditampilkan
+        }
+      }
+
       const contentSection = document.querySelector(".content");
       const gallery = document.getElementById("gallery");
       const aspirasiMenu = document.querySelector(".aspirasi-menu");
